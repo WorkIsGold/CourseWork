@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uc="clr-namespace:ShestakovCourse2Work">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="DictionaryDeepAmethystColor.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <ControlTemplate x:Key="templateBackground">
+        <Border x:Name="canvasButtonBorder" BorderBrush="{StaticResource DeepAmethyst}" Panel.ZIndex="0" Background="{StaticResource DeepAmethyst}" BorderThickness="1"
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ContentControl Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Content=""/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter TargetName="canvasButtonBorder" Property="Background" Value="{StaticResource DeepAmethyst}"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

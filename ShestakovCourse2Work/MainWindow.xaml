@@ -1,0 +1,99 @@
+﻿<Window x:Class="ShestakovCourse2Work.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShestakovCourse2Work"
+        xmlns:uc="clr-namespace:ShestakovCourse2Work"
+        xmlns:Controls="clr-namespace:ShestakovCourse2Work"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        PreviewKeyDown="Window_KeyDown">
+    <Window.Resources>
+        <Style x:Key="stylePeaks">
+            <EventSetter Event="uc:Peaks.PreviewMouseLeftButtonDown" Handler="btn_PreviewMouseLeftButtonDown"/>
+            <EventSetter Event="uc:Peaks.PreviewMouseLeftButtonUp" Handler="btn_PreviewMouseLeftButtonUp"/>
+            <EventSetter Event="uc:Peaks.PreviewMouseMove" Handler="btn_PreviewMouseMove"/>
+            <EventSetter Event="uc:Peaks.PreviewMouseRightButtonDown" Handler="btn_PreviewMouseRightButtonDown"/>
+        </Style>
+        <Style x:Key="InfoStyle" TargetType="TextBlock">
+            <Setter Property="Background" Value="{StaticResource DeepAmethyst}"/>
+            <Setter Property="Foreground" Value="Gold"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="EventStyleBackground">
+            <EventSetter Event="Button.PreviewMouseRightButtonDown" Handler="canvasButton_PreviewMouseRightButtonDown"/>
+            <EventSetter Event="Button.MouseMove" Handler="canvas_PreviewMouseMove"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="Background">
+        <Button x:Name="canvasButton" Template="{StaticResource templateBackground}" Style="{StaticResource EventStyleBackground}"/>
+        <Canvas x:Name="canvas1" AllowDrop ="True" RenderTransformOrigin="0.027,0.064" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <uc:Peaks x:Name="roundButton1" Template="{StaticResource templatePeaks}" 
+            Style="{StaticResource stylePeaks}" Canvas.Left="400" Canvas.Top="220" Number="0"/>
+            <Border BorderBrush="Goldenrod" BorderThickness="2" Background="{StaticResource DeepAmethyst}" CornerRadius="7" Height="25" Width="26" Canvas.Left="10" Canvas.Top="10">
+                <TextBlock Text="I" Foreground="Gold" TextAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.ToolTip>
+                        <ToolTip Background="{StaticResource DeepAmethyst}" BorderBrush="Goldenrod">
+                            <StackPanel>
+                                <TextBlock Foreground="Gold" Background="{StaticResource DeepAmethyst}" TextAlignment="Left">
+                                Чтобы поставить новую вершину, нажмите правой кнопкой мыши в любом месте окна
+                                </TextBlock>
+                                <Border BorderBrush="Goldenrod" BorderThickness="1" Background="{StaticResource DeepAmethyst}"  CornerRadius="1"/>
+                                <TextBlock Foreground="Gold" Background="{StaticResource DeepAmethyst}" TextAlignment="Left">
+                                Чтобы передвинуть вершину, нажмите по ней левой кнопкой мыши и перетащите в нужное место
+                                </TextBlock>
+                                <Border Background="{StaticResource DeepAmethyst}" BorderBrush="Goldenrod" BorderThickness="1" CornerRadius="1"/>
+                                <TextBlock Foreground="Gold" Background="{StaticResource DeepAmethyst}" TextAlignment="Left">
+                                Чтобы соединить две вершины ребром, нажмите по одной из них правой кнопкой мыши
+                                <LineBreak/>
+                                После чего на экране появится ребро и начнёт своим концом следовать за курсором
+                                <LineBreak/>
+                                Перетащите курсор на вторую вершину и нажмите на неё правой кнопкой мыши, тогда ребро соединит эти вершины
+                                <LineBreak/>
+                                Если Вы оба раза нажали на одну и ту же вершину, автоматически рядом появится новая вершина, уже соединённая с ребром
+                                </TextBlock>
+                                <Border Background="{StaticResource DeepAmethyst}" BorderBrush="Goldenrod" BorderThickness="1" CornerRadius="1"/>
+                                <TextBlock Foreground="Gold" Background="{StaticResource DeepAmethyst}" TextAlignment="Left">
+                                Для поиска базы независимых циклов графа нажмите Enter
+                                <LineBreak/>
+                                    <Run Text="Рёбра базы независимых циклов выделятся"/>
+                                    <Run Text=" зелёным цветом" Foreground="{StaticResource Emerald}"/>
+                                </TextBlock>
+                                <Border Background="{StaticResource DeepAmethyst}" BorderBrush="Goldenrod" BorderThickness="1" CornerRadius="2"/>
+                                <TextBlock Foreground="Gold" Background="{StaticResource DeepAmethyst}" TextAlignment="Left">
+                                Чтобы закрыть окно программы, нажмите Esc
+                                </TextBlock>
+                            </StackPanel>
+                        </ToolTip>
+                    </TextBlock.ToolTip>
+            </TextBlock>
+            </Border>
+            <TextBlock x:Name="textblock1" Canvas.Left="391" Canvas.Top="333" Style="{StaticResource InfoStyle}"/>
+            <TextBlock x:Name="textblock2" Canvas.Left="113" Canvas.Top="278" RenderTransformOrigin="0.547,0.484" Style="{StaticResource InfoStyle}">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform X="-5.815" Y="1.668"/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textblock3" Canvas.Left="107" Canvas.Top="248" RenderTransformOrigin="0.5,0.5" Style="{StaticResource InfoStyle}">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <uc:Peaks x:Name="testclass1" Template="{StaticResource templatePeaks}" Style="{StaticResource stylePeaks}" Canvas.Left="722" Canvas.Top="379" HorizontalAlignment="Center" VerticalAlignment="Top" Number="1"/>
+        </Canvas>
+    </Grid>
+</Window>
